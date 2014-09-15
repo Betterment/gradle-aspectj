@@ -5,19 +5,6 @@ apply plugin: 'idea'
 group = 'com.betterment'
 version = '1.6'
 
-repositories {
-    mavenCentral()
-
-    maven {
-        credentials {
-            credentials {
-                username "$nexusUser"
-                password "$nexusPass"
-            }
-        }
-        url "http://nexus.betterment.com/content/repositories/better/"
-    }
-}
 
 dependencies {
     compile localGroovy()
@@ -32,7 +19,7 @@ publishing {
     }
     repositories {
         maven {
-            url "http://nexus.betterment.com/content/repositories/better/"
+            url "http://nexus.betterment.com/content/repositories/vendor/"
             credentials {
                 username "$nexusUser"
                 password "$nexusPass"

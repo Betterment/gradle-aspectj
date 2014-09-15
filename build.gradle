@@ -2,12 +2,20 @@ apply plugin: 'groovy'
 apply plugin: 'maven-publish'
 apply plugin: 'idea'
 
-group = 'nl.eveoh'
-version = '1.5'
+group = 'com.betterment'
+version = '1.6'
 
 repositories {
+    mavenCentral()
+
     maven {
-        url "https://maven.eveoh.nl/content/groups/public"
+        credentials {
+            credentials {
+                username "$nexusUser"
+                password "$nexusPass"
+            }
+        }
+        url "http://nexus.betterment.com/content/repositories/better/"
     }
 }
 
@@ -24,12 +32,10 @@ publishing {
     }
     repositories {
         maven {
-            url "https://maven.eveoh.nl/content/repositories/releases"
-            if (project.hasProperty('mavenUser')) {
-                credentials {
-                    username mavenUser
-                    password mavenPass
-                }
+            url "http://nexus.betterment.com/content/repositories/better/"
+            credentials {
+                username "$nexusUser"
+                password "$nexusPass"
             }
         }
     }
